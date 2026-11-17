@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy — PanUrgos</title>
+  <meta name="description" content="What PanUrgos collects when you download it, why, and how to have it deleted.">
+  <meta name="theme-color" content="#050506">
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; base-uri 'self'; form-action 'none'">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="nav scrolled">
+    <div class="wrap nav-in">
+      <a class="brand" href="../" aria-label="PanUrgos home">
+        <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d58f"/><stop offset=".55" stop-color="#ff8a3d"/><stop offset="1" stop-color="#e2362b"/></linearGradient></defs><path d="M16 2 4 8v8c0 7 5.2 12.4 12 14 6.8-1.6 12-7 12-14V8L16 2z" fill="url(#lg)"/><path d="M16 9a7 7 0 1 0 0 14 5.2 5.2 0 0 1 0-14z" fill="#050506"/></svg>
+        <span>PANURGOS</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="wrap narrow prose">
+      <p class="label">// PRIVACY</p>
+      <h1>What we keep<span class="fire">.</span></h1>
+      <p class="page-lede">Short version: one email address, to send you a download link. Nothing that follows you around.</p>
+
+      <h2>The PanUrgos Studio app</h2>
+      <p>The app sends us nothing. It has no telemetry, crash reporting or usage tracking. Your code, prompts and models stay on your machine. Anything the app does reach out for (model downloads from Hugging Face, llama.cpp updates from GitHub) is off until you allow it and is listed in the app's Network Ledger.</p>
+
+      <h2>This website</h2>
+      <p>No cookies, no analytics, no ad pixels, and nothing loaded from other companies. Fonts and images are served from panurgos.com itself. The site is hosted on GitHub Pages, which, like any web host, handles the connection and may keep standard server logs; we don't receive or use them.</p>
+
+      <h2>When you download</h2>
+      <p>To download PanUrgos Studio you give us an email address. We store:</p>
+      <ul>
+        <li>your email address,</li>
+        <li>the platform you chose (Windows, macOS or Linux),</li>
+        <li>whether you asked to hear about new versions,</li>
+        <li>when you signed up, verified and downloaded, and which version.</li>
+      </ul>
+      <p>We don't store your IP address, device details or anything about your browsing. Download links are single-use and expire after 30 minutes; we keep only a scrambled (hashed) form of them and delete expired ones daily.</p>
+
+      <h2>Why</h2>
+      <p>To make sure each download goes to a real person, to count how many people use PanUrgos, and to tell you when a new version or your platform ships, only if you ticked that box. We never sell, rent or share your email, and we never use it for advertising.</p>
+
+      <h2>Who handles it</h2>
+      <ul>
+        <li><b>Cloudflare</b> runs the download service and stores the data above.</li>
+        <li><b>Resend</b> delivers the emails with your download link.</li>
+      </ul>
+      <p>Both act only on our instructions, for these purposes.</p>
+
+      <h2>Deleting your data</h2>
+      <p>Ask and we'll delete everything we hold about you. <span data-contact>Email <a data-link="email" href="#">us</a>.</span><span data-contact-fallback>Contact us through the <a href="https://github.com/notpriyanshu/PanUrgos">PanUrgos GitHub page</a>.</span> We keep your data until you ask us to delete it, or for two years after your last download, whichever comes first.</p>
+
+      <p style="margin-top:48px;color:var(--fg-3);font-size:14px">Last updated 17 November 2026.</p>
+    </div>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <p class="foot-note">PanUrgos · <a href="../">Home</a></p>
+    </div>
+  </footer>
+
+  <script src="../config.js"></script>
+  <script src="privacy.js"></script>
+</body>
+</html>

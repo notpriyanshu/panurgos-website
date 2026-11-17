@@ -1,7 +1,8 @@
 // panurgos.com — all effects run locally. No tracking, no network requests.
 (() => {
-  // Fill these in to show the Instagram and contact links (they stay hidden while empty).
-  const LINKS = { instagram: '', email: '' };
+  // Links and the download API live in config.js.
+  const CFG = window.PANURGOS || {};
+  const LINKS = { instagram: CFG.instagram || '', email: CFG.email || '' };
 
   const HIERO = [...'𓂀𓋹𓆣𓇳𓊽𓁹𓅃𓆄𓋴𓏏𓂋𓈖𓊪𓃭𓅓𓉐𓆓𓇋𓄿𓎛𓐍𓇯𓆑𓂝𓃀𓅱𓍿𓌳𓊹𓋞'];
   const RUNES = [...'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ'];
@@ -488,5 +489,71 @@
     const line = [...HIERO].sort(() => Math.random() - 0.5).join('') + [...HIERO].sort(() => Math.random() - 0.5).join('');
     const unit = '<span>' + line + '</span><span class="sep">PANURGOS · ΠΑΝΟΥΡΓΟΣ</span>';
     track.innerHTML = unit.repeat(6);
+  }
+  // ------------------------------------------------------------------ signup panel (download gate)
+  const dlg = $('#dlg');
+  if (dlg) {
+    const form = $('#dlg-form'), done = $('#dlg-done'), msg = $('#dlg-msg'), note = $('#dlg-note');
+    const emailIn = $('#dlg-email'), consent = $('#dlg-consent'), notify = $('#dlg-notify'), submit = $('#dlg-submit');
+    const radios = $$('input[name="platform"]', form);
+    let lastFocus = null;
+
+    if (!CFG.api) {
+      // Service not live yet: keep the cards honest.
+      for (const c of $$('.dl-card[data-dl-open]')) { c.classList.add('soon'); c.disabled = true; const em = $('em', c); if (em) em.textContent = 'Opening soon'; }
+    }
+    const setPlatform = (p) => {
+      const r = radios.find((x) => x.value === p) || radios[0]; r.checked = true;
+      note.hidden = r.value === 'win';
+      submit.textContent = r.value === 'win' ? 'Send my link' : 'Verify my email';
+    };
+    radios.forEach((r) => r.addEventListener('change', () => setPlatform(r.value)));
+
+    const open = (platform) => {
+      if (!CFG.api) { location.hash = '#download'; return; }
+      lastFocus = document.activeElement;
+      form.hidden = false; done.hidden = true; msg.textContent = '';
+      setPlatform(platform || os || 'win');
+      dlg.hidden = false; document.body.classList.add('locked');
+      requestAnimationFrame(() => { dlg.classList.add('open'); emailIn.focus(); });
+    };
+    const close = () => {
+      dlg.classList.remove('open'); document.body.classList.remove('locked');
+      setTimeout(() => { dlg.hidden = true; }, 250);
+      lastFocus?.focus?.();
+    };
+    for (const b of $$('[data-dl-open]')) b.addEventListener('click', (e) => { if (!CFG.api && b.tagName === 'A') return; e.preventDefault(); open(b.dataset.os); });
+    for (const b of $$('[data-dl-close]', dlg)) b.addEventListener('click', close);
+    dlg.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+      if (e.key === 'Tab') {
+        const f = $$('a[href], button:not([disabled]), input:not([disabled])', dlg).filter((n) => n.offsetParent);
+        if (!f.length) return;
+        if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f.at(-1).focus(); }
+        else if (!e.shiftKey && document.activeElement === f.at(-1)) { e.preventDefault(); f[0].focus(); }
+      }
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = '';
+      const email = emailIn.value.trim();
+      if (!emailIn.checkValidity() || !email) { msg.textContent = 'Enter a valid email address.'; emailIn.focus(); return; }
+      if (!consent.checked) { msg.textContent = 'Please agree to the privacy terms to continue.'; consent.focus(); return; }
+      const platform = radios.find((r) => r.checked).value;
+      submit.disabled = true; const label = submit.textContent; submit.textContent = 'Sending…';
+      try {
+        const res = await fetch(CFG.api + '/signup', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, platform, notify: notify.checked, consent: true })
+        });
+        const body = await res.json().catch(() => ({}));
+        if (!res.ok) { msg.textContent = body.message || 'Something went wrong. Please try again.'; return; }
+        $('#dlg-sent-to').textContent = email;
+        form.hidden = true; done.hidden = false; $('button', done).focus();
+      } catch {
+        msg.textContent = "Couldn't reach the download service. Check your connection and try again.";
+      } finally { submit.disabled = false; submit.textContent = label; }
+    });
   }
 })();

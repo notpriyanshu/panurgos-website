@@ -16,7 +16,7 @@
   <meta property="og:image" content="https://panurgos.com/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
   <!-- No analytics, no cookies, no fonts or scripts from anyone else. Everything here is served from panurgos.com. -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'none'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' http://127.0.0.1:8787 https://*.workers.dev; base-uri 'self'; form-action 'none'">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -97,7 +97,7 @@
         <p class="lede reveal">Intelligence that answers to you alone. Your models, on your machines, serving only the people you choose. Nothing leaves. No one else is in the room.</p>
         <div class="cta-row reveal">
           <a class="btn btn-fire btn-lg" href="#perimeter">Step inside</a>
-          <a class="btn btn-ghost btn-lg" href="#download" data-os-cta><span data-os-label>Download Studio</span></a>
+          <a class="btn btn-ghost btn-lg" href="#download" data-os-cta data-dl-open><span data-os-label>Download Studio</span></a>
         </div>
         <div class="hud reveal" aria-label="Status">
           <span><i class="dot ok"></i>EGRESS 0 B</span>
@@ -315,23 +315,23 @@
         <header class="sec-head center reveal">
           <p class="label">// INITIATION</p>
           <h2>Install it. <span class="fire">Unplug it.</span></h2>
-          <p>No account. No sign-in. No email. A guided installer checks your machine and steps aside.</p>
+          <p>One verified email address, nothing more. No password, no tracking, no cookies. A guided installer checks your machine and steps aside.</p>
         </header>
         <div class="dl reveal">
-          <div class="dl-card soon" data-os="win">
+          <button class="dl-card" type="button" data-os="win" data-dl-open>
             <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10 4.5v7H3v-6zm0 13 7 1v-7H3v6zm8 1.2 10 1.3v-8.5H11v7.2zm0-15.4v7.2h10V3l-10 1.3z"/></svg>
-            <b>Windows</b><span>Windows 10 and 11 · 64-bit installer</span><em>Opening soon</em>
-          </div>
-          <div class="dl-card soon" data-os="mac">
+            <b>Windows</b><span>Windows 10 and 11 · 64-bit installer</span><em data-cta="Get the installer">Get the installer</em>
+          </button>
+          <button class="dl-card" type="button" data-os="mac" data-dl-open>
             <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.2 9.2.8 1.1 1.7 2.3 2.8 2.3s1.6-.7 3-.7 1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.300 1.2-2.5 1.3-2.6-.1 0-2.4-.9-2.4-3.6zM14.2 5.6A4 4 0 0 0 15.1 2.6a4 4 0 0 0-2.7 1.4 3.8 3.8 0 0 0-.9 2.9 3.4 3.4 0 0 0 2.700-1.3z"/></svg>
-            <b>macOS</b><span>Apple Silicon and Intel · .dmg</span><em>Opening soon</em>
-          </div>
-          <div class="dl-card soon" data-os="linux">
+            <b>macOS</b><span>Apple Silicon and Intel · .dmg</span><em data-cta="Join the macOS list">Join the macOS list</em>
+          </button>
+          <button class="dl-card" type="button" data-os="linux" data-dl-open>
             <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2c-2 0-3.3 1.7-3.3 4.2 0 1.3.3 2.2-.4 3.4-.9 1.6-2.6 3.4-2.9 5.6-.2 1.3.3 2.3.9 2.8-.4.6-1.6.9-1.5 1.8.1.8 1.2 1 2.4 1.3 1.2.4 1.9 1 2.8.9.8 0 1.3-.6 2-.6s1.2.6 2 .6c.9.1 1.6-.5 2.8-.9 1.2-.3 2.3-.5 2.4-1.3.1-.9-1.1-1.2-1.5-1.8.6-.5 1.1-1.5.9-2.8-.3-2.2-2-4-2.9-5.6-.7-1.2-.4-2.1-.4-3.4C15.3 3.7 14 2 12 2z"/></svg>
-            <b>Linux</b><span>AppImage and .deb · x64</span><em>Opening soon</em>
-          </div>
+            <b>Linux</b><span>AppImage and .deb · x64</span><em data-cta="Join the Linux list">Join the Linux list</em>
+          </button>
         </div>
-        <p class="fine">Downloads open shortly. The source is already public on GitHub.</p>
+        <p class="fine">Windows is ready now. macOS and Linux are on the way: sign up for yours and we'll email you once when it ships.</p>
       </div>
     </section>
 
@@ -361,7 +361,11 @@
           </details>
           <details>
             <summary>Is it really free?</summary>
-            <p>PanUrgos Studio is MIT licensed, with no account, subscription or usage limits. Your hardware does the work, so there's nothing to meter.</p>
+            <p>PanUrgos Studio is MIT licensed, with no subscription or usage limits. Your hardware does the work, so there's nothing to meter.</p>
+          </details>
+          <details>
+            <summary>Why do you ask for my email?</summary>
+            <p>So each download goes to a real person and we know how many people use PanUrgos. Your address is used only to send your download link and, if you ask, a note when a new version or your platform ships. No password, no tracking, no selling, and we delete it on request. Details are on the <a href="privacy/">privacy page</a>.</p>
           </details>
           <details>
             <summary>Why the name?</summary>
@@ -385,13 +389,47 @@
       <nav class="foot-links" aria-label="Footer">
         <a href="https://github.com/notpriyanshu/PanUrgos">GitHub</a>
         <a href="https://github.com/notpriyanshu/PanUrgos/blob/main/LICENSE">License</a>
+        <a href="privacy/">Privacy</a>
         <a data-link="instagram" href="#" hidden>Instagram</a>
         <a data-link="email" href="#" hidden>Contact</a>
       </nav>
-      <p class="foot-note">This site sets no cookies, runs no analytics and makes no third-party requests. You were not tracked here. © <span data-year>2026</span> PanUrgos.</p>
+      <p class="foot-note">This site sets no cookies, runs no analytics and loads nothing from anyone else. Your email, if you give it, is used only for your download. © <span data-year>2026</span> PanUrgos.</p>
     </div>
   </footer>
 
+
+  <!-- ============================================================ SIGNUP PANEL -->
+  <div class="dlg" id="dlg" hidden>
+    <div class="dlg-back" data-dl-close></div>
+    <div class="dlg-card" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
+      <button class="dlg-x" type="button" data-dl-close aria-label="Close">×</button>
+      <form id="dlg-form" novalidate>
+        <p class="label">// INITIATION</p>
+        <h3 id="dlg-title">Get PanUrgos Studio</h3>
+        <p class="dlg-sub">We'll email you a one-time download link. No password, no tracking.</p>
+        <fieldset class="seg">
+          <legend class="sr">Platform</legend>
+          <label><input type="radio" name="platform" value="win" checked><span>Windows</span></label>
+          <label><input type="radio" name="platform" value="mac"><span>macOS</span></label>
+          <label><input type="radio" name="platform" value="linux"><span>Linux</span></label>
+        </fieldset>
+        <p class="dlg-note" id="dlg-note" hidden>This build isn't out yet. Verify your email now and we'll write once when it ships.</p>
+        <label class="fld"><span>Email</span><input type="email" id="dlg-email" name="email" required autocomplete="email" inputmode="email" placeholder="you@company.com" maxlength="254"></label>
+        <label class="chk"><input type="checkbox" id="dlg-notify"><span>Email me when a new version, or my platform, ships.</span></label>
+        <label class="chk"><input type="checkbox" id="dlg-consent" required><span>I agree to the <a href="privacy/" target="_blank" rel="noopener">privacy terms</a>: my email is used only for download links and the updates I ask for.</span></label>
+        <button class="btn btn-fire btn-lg dlg-go" type="submit" id="dlg-submit">Send my link</button>
+        <p class="dlg-msg" id="dlg-msg" role="alert"></p>
+      </form>
+      <div class="dlg-done" id="dlg-done" hidden>
+        <p class="label">// TRANSMITTED</p>
+        <h3>Check your inbox.</h3>
+        <p class="dlg-sub">If <b id="dlg-sent-to"></b> is right, a link is on its way. It works once, for 30 minutes. Nothing there? Check spam, or try again in two minutes.</p>
+        <button class="btn btn-ghost" type="button" data-dl-close>Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

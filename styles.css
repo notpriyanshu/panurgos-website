@@ -424,3 +424,60 @@ h2 { font-size: clamp(38px, 5.2vw, 72px); letter-spacing: -.02em; }
 
 @media (prefers-reduced-motion: reduce) { .frieze-track { animation: none; } }
 @media (max-width: 760px) { .hero h1.flip-h { font-size: clamp(44px, 13vw, 72px); } .frieze { height: 36px; } .frieze-track { font-size: 18px; } }
+
+/* ------------------------------------------------------------------ signup panel */
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+button.dl-card { font: inherit; color: inherit; text-align: left; background: none; border: 0; cursor: pointer; width: 100%; }
+.dl-card + .dl-card { border-left: 1px solid var(--line-2); }
+.dlg { position: fixed; inset: 0; z-index: 140; display: grid; place-items: center; padding: 16px; }
+.dlg-back { position: absolute; inset: 0; background: rgba(3, 3, 4, .78); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); opacity: 0; transition: opacity .25s ease; }
+.dlg-card {
+  position: relative; width: min(500px, 100%); max-height: calc(100vh - 32px); overflow: auto; padding: 34px 32px 28px;
+  background: radial-gradient(90% 70% at 100% 0%, rgba(255, 106, 43, .1), transparent 60%), #0b0a09;
+  border: 1px solid rgba(255, 106, 43, .35); box-shadow: 0 40px 120px -30px rgba(255, 90, 30, .45);
+  opacity: 0; transform: translateY(14px) scale(.98); transition: opacity .25s ease, transform .3s cubic-bezier(.2, .8, .2, 1);
+}
+.dlg.open .dlg-back, .dlg.open .dlg-card { opacity: 1; transform: none; }
+.dlg-x { position: absolute; top: 12px; right: 14px; width: 36px; height: 36px; background: none; border: 0; color: var(--fg-3); font-size: 26px; cursor: pointer; }
+.dlg-x:hover { color: var(--fg); }
+.dlg h3 { margin-top: 14px; font-size: 34px; }
+.dlg-sub { margin-top: 10px; color: var(--fg-2); font-size: 15px; }
+.dlg .seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 24px 0 0; padding: 0; border: 1px solid var(--line-2); }
+.dlg .seg label { position: relative; cursor: pointer; }
+.dlg .seg label + label { border-left: 1px solid var(--line-2); }
+.dlg .seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.dlg .seg span { display: block; padding: 12px 6px; text-align: center; font: 600 11.5px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--fg-3); transition: color .2s, background .2s; }
+.dlg .seg input:checked + span { color: #120604; background: linear-gradient(100deg, #ffb35c, #ff6a2b); }
+.dlg .seg input:focus-visible + span { outline: 1px solid var(--gold); outline-offset: -4px; }
+.dlg-note { margin-top: 12px; padding: 10px 12px; font-size: 13.5px; color: var(--gold); border: 1px dashed rgba(243, 213, 143, .35); }
+.fld { display: block; margin-top: 20px; }
+.fld span { display: block; margin-bottom: 8px; font: 500 11px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--fg-3); }
+.fld input { width: 100%; height: 48px; padding: 0 14px; background: #070606; border: 1px solid var(--line-2); color: var(--fg); font: 16px var(--sans); border-radius: 0; }
+.fld input:focus { outline: none; border-color: var(--ember); box-shadow: 0 0 0 3px rgba(255, 106, 43, .15); }
+.chk { display: flex; gap: 12px; align-items: flex-start; margin-top: 14px; font-size: 14px; color: var(--fg-2); cursor: pointer; }
+.chk input { flex: none; width: 17px; height: 17px; margin-top: 2px; accent-color: var(--ember); }
+.chk a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.dlg-go { width: 100%; margin-top: 24px; }
+.dlg-go[disabled] { opacity: .6; cursor: progress; }
+.dlg-msg { min-height: 20px; margin-top: 12px; font-size: 14px; color: var(--bad); }
+.dlg-done .btn { margin-top: 24px; }
+.faq details a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ------------------------------------------------------------------ simple pages (download, privacy) */
+.page { min-height: 70vh; padding: 120px 0 100px; }
+.page h1 { font-size: clamp(40px, 6vw, 72px); }
+.page .label { margin-bottom: 22px; }
+.page-lede { margin-top: 22px; font-size: 18px; color: var(--fg-2); max-width: 640px; }
+.page .cta-row { justify-content: flex-start; }
+.prose h2 { font-size: 28px; margin: 48px 0 12px; }
+.prose p, .prose li { color: var(--fg-2); }
+.prose p + p { margin-top: 12px; }
+.prose ul { padding-left: 20px; margin: 12px 0 0; }
+.prose li + li { margin-top: 6px; }
+.prose a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.spinner { display: inline-block; width: 14px; height: 14px; margin-right: 10px; border: 2px solid rgba(255, 106, 43, .25); border-top-color: var(--ember); border-radius: 50%; animation: spin 1s linear infinite; vertical-align: -2px; }
+
+@media (max-width: 760px) {
+  .dlg-card { padding: 28px 20px 22px; }
+  .dl-card + .dl-card { border-left: 0; }
+}
