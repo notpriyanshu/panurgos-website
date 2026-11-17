@@ -54,5 +54,5 @@
         `<a class="btn btn-fire btn-lg" href="${esc(url)}">Download again</a><a class="btn btn-ghost btn-lg" href="../#studio">What's inside</a>`);
       setTimeout(() => { location.href = url; }, 600);
     })
-    .catch(() => show('OFFLINE', 'Couldn\'t reach the gate<span class="fire">.</span>', 'Check your connection, then open the link from your email again. It still works until it expires.'));
+    .catch(() => show('OFFLINE', 'Couldn\'t connect<span class="fire">.</span>', 'Check your connection, then open the link from your email again. It still works until it expires.'));
 })();

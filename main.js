@@ -49,50 +49,23 @@
     if (!gate || gate.classList.contains('hidden')) return begin();
     if (ceremony && !reduced) {
       gate.classList.add('gone');
-      setTimeout(() => { gate.classList.add('hidden'); stopRain?.(); }, 1500);
+      setTimeout(() => { gate.classList.add('hidden'); }, 850);
       setTimeout(begin, 500);
-    } else { gate.classList.add('hidden'); stopRain?.(); begin(); }
+    } else { gate.classList.add('hidden'); begin(); }
   }
-  let stopRain = null;
   if (gate && !store.get('pn-awake') && !reduced) {
     document.body.classList.add('locked');
-    stopRain = rain($('#gate-rain'));
-    $('#cross').addEventListener('click', () => enter(true));
-    $('#gate-skip').addEventListener('click', () => enter(false));
+    const sw = $('#gate-switch');
+    sw.addEventListener('click', () => {
+      if (sw.getAttribute('aria-checked') === 'true') return;
+      sw.setAttribute('aria-checked', 'true');
+      setTimeout(() => enter(true), 450);
+    });
     addEventListener('keydown', function k(e) { if (e.key === 'Escape') { removeEventListener('keydown', k); enter(false); } });
-    setTimeout(() => $('#cross')?.focus({ preventScroll: true }), 5200);
+    setTimeout(() => sw.focus({ preventScroll: true }), 700);
   } else {
     gate?.classList.add('hidden');
     queueMicrotask(begin); // after the rest of this script has initialised
-  }
-
-  // Falling glyphs behind the gate.
-  function rain(canvas) {
-    if (!canvas) return null;
-    const ctx = canvas.getContext('2d');
-    const glyphs = [...'πανοῦργος01アイウエオカキクケコ<>{}[]=+*#ΣΩΨΦΔ', ...HIERO, ...RUNES];
-    let cols = [], w = 0, h = 0, fs = 16, raf = 0, last = 0;
-    const size = () => {
-      const dpr = Math.min(devicePixelRatio || 1, 2);
-      w = canvas.clientWidth; h = canvas.clientHeight;
-      canvas.width = w * dpr; canvas.height = h * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      cols = Array.from({ length: Math.ceil(w / fs) }, () => rand(-h, 0));
-    };
-    size(); addEventListener('resize', size);
-    const draw = (t) => {
-      raf = requestAnimationFrame(draw);
-      if (t - last < 50) return; last = t;
-      ctx.fillStyle = 'rgba(0,0,0,.12)'; ctx.fillRect(0, 0, w, h);
-      ctx.font = `${fs}px "PN Glyphs", "Segoe UI Historic", monospace`;
-      cols.forEach((y, i) => {
-        const ch = glyphs[(Math.random() * glyphs.length) | 0];
-        ctx.fillStyle = Math.random() > .975 ? '#e6f3ff' : 'rgba(59,155,255,.55)';
-        ctx.fillText(ch, i * fs, y);
-        cols[i] = y > h + rand(0, 400) ? 0 : y + fs;
-      });
-    };
-    raf = requestAnimationFrame(draw);
-    return () => { cancelAnimationFrame(raf); removeEventListener('resize', size); };
   }
 
   // ------------------------------------------------------------------ reveal on scroll
@@ -210,7 +183,7 @@
   // ------------------------------------------------------------------ manifesto: words light up with scroll
   const scrub = $('[data-scrub]');
   if (scrub) {
-    const HOT = /^(reading.|other|side:|walls,|clear,|forgets,|yours.)$/i;
+    const HOT = /^(own|computer|stay|with|you\.|see\.)$/i;
     scrub.innerHTML = scrub.textContent.trim().split(/\s+/).map((w) => `<span class="w${HOT.test(w) ? ' h' : ''}">${w}</span>`).join(' ');
     const words = $$('.w', scrub);
     const update = () => {
@@ -475,7 +448,8 @@
       scramble(WORDS[wi][0]);
       timer = setTimeout(next, 2600);
     };
-    const start = () => { if (running || reduced) return; running = true; timer = setTimeout(next, 2200); };
+    const still = /[?&]still\b/.test(location.search); // ?still keeps "Think." (used for the link-preview image)
+    const start = () => { if (running || reduced || still) return; running = true; timer = setTimeout(next, 2200); };
     const stop = () => { running = false; clearTimeout(timer); };
     fit(); addEventListener('resize', fit);
     new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop())).observe(flip);

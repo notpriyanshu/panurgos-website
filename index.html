@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PanUrgos — Capable of anything</title>
+  <title>PanUrgos — Private AI code editor</title>
   <meta name="description" content="PanUrgos is sovereign AI: models that run on your own machines, answer only to the people you clear, and send nothing to anyone else. PanUrgos Studio, the private AI code editor, is free for Windows, macOS and Linux.">
   <meta name="theme-color" content="#050506">
   <link rel="canonical" href="https://panurgos.com/">
@@ -11,7 +11,7 @@
   <link rel="apple-touch-icon" href="assets/icon.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://panurgos.com/">
-  <meta property="og:title" content="PanUrgos — Capable of anything">
+  <meta property="og:title" content="PanUrgos — Private AI code editor">
   <meta property="og:description" content="Sovereign AI. Your models, your machines, your people. No one else is in the room.">
   <meta property="og:image" content="https://panurgos.com/assets/og.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -20,19 +20,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- ============================================================ THE GATE -->
-  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
-    <canvas class="gate-rain" id="gate-rain" aria-hidden="true"></canvas>
+  <!-- ============================================================ ENTRANCE -->
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-label="Enter PanUrgos">
     <div class="gate-in">
-      <p class="gate-line l1">Every prompt you have ever typed was read.</p>
-      <p class="gate-line l2">Every file you uploaded was kept.</p>
-      <p class="gate-line l3">Somewhere, a model learned your secrets.</p>
-      <h2 class="gate-title l4" id="gate-title">There is another side.</h2>
-      <button class="cross l5" id="cross" type="button">
-        <span class="cross-orb" aria-hidden="true"></span>
-        <span class="cross-label">Cross over</span>
-      </button>
-      <button class="gate-skip l5" id="gate-skip" type="button">Enter without ceremony</button>
+      <span class="gate-word" id="gate-word">Privacy</span>
+      <button class="switch" id="gate-switch" type="button" role="switch" aria-checked="false" aria-labelledby="gate-word"><span class="knob"></span></button>
     </div>
   </div>
 
@@ -45,9 +37,9 @@
         <span>PANURGOS</span>
       </a>
       <nav class="links" aria-label="Main">
-        <a href="#perimeter">The Perimeter</a>
-        <a href="#sovereign">Sovereign</a>
-        <a href="#laws">The Four Laws</a>
+        <a href="#manifesto">Why local</a>
+        <a href="#laws">Privacy</a>
+        <a href="#perimeter">Teams</a>
         <a href="#studio">Studio</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -89,12 +81,12 @@
             <g id="bird" filter="url(#soft)"></g>
           </svg>
         </div>
-        <p class="kicker reveal">PanUrgos <span class="sep">·</span> <span class="greek">πανοῦργος</span> <span class="sep">·</span> capable of anything</p>
+        <p class="kicker reveal">PanUrgos <span class="sep">·</span> <span class="greek">πανοῦργος</span></p>
         <h1 class="reveal flip-h" aria-label="Think. Create. Keep it private.">
           <span class="flip fire" id="flip" aria-hidden="true">Think.</span>
-        </h1>        <p class="lede reveal">Intelligence that answers to you alone. Your models, on your machines, serving only the people you choose. Nothing leaves. No one else is in the room.</p>
+        </h1>        <p class="lede reveal">A code editor with an AI assistant that runs on your own computer. Your code, prompts and files stay on your machine.</p>
         <div class="cta-row reveal">
-          <a class="btn btn-fire btn-lg" href="#perimeter">Step inside</a>
+          <a class="btn btn-fire btn-lg" href="#manifesto">How it works</a>
           <a class="btn btn-ghost btn-lg" href="#download" data-os-cta data-dl-open><span data-os-label>Download Studio</span></a>
         </div>
         <div class="hud reveal" aria-label="Status">
@@ -112,8 +104,8 @@
     <!-- ============================================================ MANIFESTO -->
     <section class="manifesto" id="manifesto">
       <div class="wrap narrow">
-        <p class="label">// TRANSMISSION 001</p>
-        <p class="scrub" data-scrub>The old world asked you to trust it. To upload your code, your contracts, your patients, your plans, and hope that no one was reading. Someone was always reading. The cloud never forgets, and it was never yours. So we built the other side: intelligence that lives inside your walls, serves only those you clear, and leaves no trace beyond them.</p>
+        <p class="label">// WHY LOCAL</p>
+        <p class="scrub" data-scrub>Most AI coding tools send your code to someone else's servers to answer a question. PanUrgos runs the model on your own computer instead, so your code, prompts and files stay with you. Nothing is uploaded unless you choose a cloud model, and every request the app makes is listed where you can see it.</p>
       </div>
     </section>
 
@@ -121,16 +113,16 @@
     <section class="section" id="perimeter">
       <div class="wrap">
         <header class="sec-head center reveal">
-          <p class="label">// THE PERIMETER</p>
-          <h2>Your data goes in.<br><span class="fire">Nothing gets out.</span></h2>
-          <p>Feed it what you could never send to a cloud. PanUrgos reasons over it on your own hardware, inside your perimeter, and answers only those who hold clearance.</p>
+          <p class="label">// FOR TEAMS · IN DEVELOPMENT</p>
+          <h2>Private AI for <span class="fire">your whole team.</span></h2>
+          <p>We're building a version for organisations: one model server on your own network that only the people you approve can use. Requests from outside are refused, and every request is logged.</p>
         </header>
 
         <div class="graph-viewport reveal" id="graph-viewport">
           <div class="graph" id="graph">
             <canvas class="graph-canvas" id="graph-canvas" aria-hidden="true"></canvas>
 
-            <p class="g-label g-tl">SOVEREIGN GRAPH</p>
+            <p class="g-label g-tl">TEAM SERVER · PREVIEW</p>
             <p class="g-label g-tc"><i class="sq dim"></i>UNREAD <i class="sq lit"></i>CONNECTED</p>
             <p class="g-label g-tr"><b data-links>0</b> links <span class="g-sep">·</span> <b>0 B</b> egress</p>
 
@@ -152,7 +144,7 @@
               <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2 4 8v8c0 7 5.2 12.4 12 14 6.8-1.6 12-7 12-14V8L16 2z" fill="url(#lg)"/><path d="M16 9a7 7 0 1 0 0 14 5.2 5.2 0 0 1 0-14z" fill="#fff"/></svg>
             </div>
 
-            <div class="g-perimeter" style="--x:900px"><span>YOUR PERIMETER</span></div>
+            <div class="g-perimeter" style="--x:900px"><span>YOUR NETWORK</span></div>
 
             <button class="g-node person" type="button" style="--x:706px;--y:118px" data-ev="1">A. Okafor</button>
             <button class="g-node data" type="button" style="--x:672px;--y:204px" data-ev="0">Term sheet v7</button>
@@ -177,7 +169,7 @@
             <p class="g-label g-br">HOVER ANYTHING</p>
           </div>
         </div>
-        <p class="footnote reveal">An illustration of PanUrgos Sovereign, the organisation platform now in development. PanUrgos Studio already works this way on a single machine.</p>
+        <p class="footnote reveal">An illustration of the team version, which is in development. PanUrgos Studio already works this way on a single computer.</p>
       </div>
     </section>
 
@@ -186,24 +178,24 @@
       <div class="wrap">
         <div class="versus reveal">
           <div class="vs-col old">
-            <p class="label">THE OLD WORLD</p>
+            <p class="label">CLOUD AI TOOLS</p>
             <ul>
-              <li>Your prompts stored on someone else's servers</li>
-              <li>Your code used to train someone else's model</li>
-              <li>Vendors, contractors and governments one subpoena away</li>
-              <li>An audit log you're not allowed to see</li>
-              <li>Rent paid by the token, forever</li>
+              <li>Your code and prompts are sent to someone else's servers</li>
+              <li>What you send may be used to improve their models</li>
+              <li>The provider controls who can access it</li>
+              <li>You can't see what was sent</li>
+              <li>You pay per use or by subscription</li>
             </ul>
           </div>
           <div class="vs-mid" aria-hidden="true"><span>→</span></div>
           <div class="vs-col new">
-            <p class="label">THE OTHER SIDE</p>
+            <p class="label">PANURGOS</p>
             <ul>
-              <li>Models run on your own metal, at 127.0.0.1</li>
-              <li>Nothing you write ever trains anything</li>
-              <li>No route out of your network. Not even for us</li>
-              <li>Every request in a ledger you own</li>
-              <li>Your hardware. No meter. No rent</li>
+              <li>Models run on your own computer</li>
+              <li>Nothing you write is used for training</li>
+              <li>Nothing leaves your machine unless you allow it</li>
+              <li>Every network request is listed in a log you can read</li>
+              <li>Free and open source</li>
             </ul>
           </div>
         </div>
@@ -214,22 +206,22 @@
     <section class="section" id="laws">
       <div class="wrap">
         <header class="sec-head reveal">
-          <p class="label">// THE FOUR LAWS</p>
-          <h2>Written into the code.<br><span class="fire">Not the terms of service.</span></h2>
+          <p class="label">// HOW PRIVACY WORKS</p>
+          <h2>Built into the app, <span class="fire">not promised in a policy.</span></h2>
         </header>
         <div class="laws reveal" id="laws-ui">
-          <div class="law-tabs" role="tablist" aria-label="The four laws">
+          <div class="law-tabs" role="tablist" aria-label="How privacy works">
             <button class="law-tab active" role="tab" aria-selected="true" aria-controls="law-0" id="tab-0" data-i="0">
-              <span class="n">I</span><span class="t"><b>Sovereignty</b><small>The model runs on your metal.</small></span><span class="bar"><i></i></span>
+              <span class="n">I</span><span class="t"><b>Local models</b><small>The AI runs on your computer.</small></span><span class="bar"><i></i></span>
             </button>
             <button class="law-tab" role="tab" aria-selected="false" aria-controls="law-1" id="tab-1" data-i="1" tabindex="-1">
-              <span class="n">II</span><span class="t"><b>Memory</b><small>Every request is written down.</small></span><span class="bar"><i></i></span>
+              <span class="n">II</span><span class="t"><b>Network log</b><small>Every request is recorded.</small></span><span class="bar"><i></i></span>
             </button>
             <button class="law-tab" role="tab" aria-selected="false" aria-controls="law-2" id="tab-2" data-i="2" tabindex="-1">
-              <span class="n">III</span><span class="t"><b>Silence</b><small>Nothing phones home. Ever.</small></span><span class="bar"><i></i></span>
+              <span class="n">III</span><span class="t"><b>No telemetry</b><small>Nothing is sent to us.</small></span><span class="bar"><i></i></span>
             </button>
             <button class="law-tab" role="tab" aria-selected="false" aria-controls="law-3" id="tab-3" data-i="3" tabindex="-1">
-              <span class="n">IV</span><span class="t"><b>Clearance</b><small>Only the chosen may ask.</small></span><span class="bar"><i></i></span>
+              <span class="n">IV</span><span class="t"><b>Access control</b><small>For teams, in development.</small></span><span class="bar"><i></i></span>
             </button>
           </div>
           <div class="law-panels">
@@ -247,7 +239,7 @@
             </figure>
             <figure class="law-panel" role="tabpanel" id="law-3" aria-labelledby="tab-3" hidden>
               <div class="roster">
-                <div class="roster-head"><span>ACCESS ROSTER</span><span class="tag">SOVEREIGN · PREVIEW</span></div>
+                <div class="roster-head"><span>ACCESS ROSTER</span><span class="tag">TEAMS · PREVIEW</span></div>
                 <div class="roster-row"><i class="dot ok"></i><b>A. Okafor</b><span>Platform security</span><em class="lvl l4">LEVEL IV</em></div>
                 <div class="roster-row"><i class="dot ok"></i><b>M. Reyes</b><span>General counsel</span><em class="lvl l3">LEVEL III</em></div>
                 <div class="roster-row"><i class="dot ok"></i><b>J. Lindqvist</b><span>Research</span><em class="lvl l2">LEVEL II</em></div>
@@ -265,9 +257,9 @@
     <section class="section studio" id="studio">
       <div class="wrap">
         <header class="sec-head center reveal">
-          <p class="label">// AVAILABLE NOW · PANURGOS STUDIO</p>
+          <p class="label">// PANURGOS STUDIO · AVAILABLE NOW</p>
           <h2>Keep your code <span class="fire">private.</span></h2>
-          <p>The first instrument of PanUrgos: a full code editor with an AI agent that runs entirely on your machine. Free, open source, and yours.</p>
+          <p>A full code editor with an AI assistant that runs on your machine. Free and open source.</p>
         </header>
         <figure class="window studio-shot reveal">
           <div class="window-glow" aria-hidden="true"></div>
@@ -291,8 +283,8 @@
     <section class="section hardware" id="hardware">
       <div class="wrap">
         <header class="sec-head center reveal">
-          <p class="label">// ANY MACHINE</p>
-          <h2>From a laptop to a <span class="fire">throne room.</span></h2>
+          <p class="label">// HARDWARE</p>
+          <h2>Runs on <span class="fire">most computers.</span></h2>
           <p>Setup reads your hardware and installs the fastest build for it.</p>
         </header>
         <div class="hw reveal">
@@ -311,9 +303,9 @@
       <div class="rise" aria-hidden="true"></div>
       <div class="wrap">
         <header class="sec-head center reveal">
-          <p class="label">// INITIATION</p>
-          <h2>Install it. <span class="fire">Unplug it.</span></h2>
-          <p>One verified email address, nothing more. No password, no tracking, no cookies. A guided installer checks your machine and steps aside.</p>
+          <p class="label">// DOWNLOAD</p>
+          <h2>Download <span class="fire">PanUrgos Studio.</span></h2>
+          <p>Sign in with Google or GitHub, or use your email. We don't track you or set cookies. The installer checks your hardware and sets everything up.</p>
         </header>
         <div class="dl reveal">
           <button class="dl-card" type="button" data-os="win" data-dl-open>
@@ -322,14 +314,14 @@
           </button>
           <button class="dl-card" type="button" data-os="mac" data-dl-open>
             <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.5 2-3.6a4.3 4.3 0 0 0-3.4-1.8c-1.4-.2-2.8.8-3.5.8s-1.8-.8-3-.8a4.5 4.5 0 0 0-3.8 2.3c-1.6 2.8-.4 7 1.2 9.2.8 1.1 1.7 2.3 2.8 2.3s1.6-.7 3-.7 1.8.7 3 .7 2-1.1 2.8-2.2c.9-1.300 1.2-2.5 1.3-2.6-.1 0-2.4-.9-2.4-3.6zM14.2 5.6A4 4 0 0 0 15.1 2.6a4 4 0 0 0-2.7 1.4 3.8 3.8 0 0 0-.9 2.9 3.4 3.4 0 0 0 2.700-1.3z"/></svg>
-            <b>macOS</b><span>Apple Silicon and Intel · .dmg</span><em data-cta="Join the macOS list">Join the macOS list</em>
+            <b>macOS</b><span>Apple Silicon and Intel · .dmg</span><em data-cta="Get the installer">Get the installer</em>
           </button>
           <button class="dl-card" type="button" data-os="linux" data-dl-open>
             <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2c-2 0-3.3 1.7-3.3 4.2 0 1.3.3 2.2-.4 3.4-.9 1.6-2.6 3.4-2.9 5.6-.2 1.3.3 2.3.9 2.8-.4.6-1.6.9-1.5 1.8.1.8 1.2 1 2.4 1.3 1.2.4 1.9 1 2.8.9.8 0 1.3-.6 2-.6s1.2.6 2 .6c.9.1 1.6-.5 2.8-.9 1.2-.3 2.3-.5 2.4-1.3.1-.9-1.1-1.2-1.5-1.8.6-.5 1.1-1.5.9-2.8-.3-2.2-2-4-2.9-5.6-.7-1.2-.4-2.1-.4-3.4C15.3 3.7 14 2 12 2z"/></svg>
-            <b>Linux</b><span>AppImage and .deb · x64</span><em data-cta="Join the Linux list">Join the Linux list</em>
+            <b>Linux</b><span>AppImage and .deb · x64</span><em data-cta="Get the installer">Get the installer</em>
           </button>
         </div>
-        <p class="fine">Windows is ready now. macOS and Linux are on the way: sign up for yours and we'll email you once when it ships.</p>
+        <p class="fine">Free for Windows, macOS and Linux.</p>
       </div>
     </section>
 
@@ -337,8 +329,8 @@
     <section class="section" id="faq">
       <div class="wrap narrow">
         <header class="sec-head center reveal">
-          <p class="label">// INQUIRIES</p>
-          <h2>Questions, answered.</h2>
+          <p class="label">// FAQ</p>
+          <h2>Questions</h2>
         </header>
         <div class="faq reveal">
           <details>
@@ -346,8 +338,8 @@
             <p>Not when you use a local model, which is the default. The model runs in llama.cpp on 127.0.0.1, and the editor interface can't reach the network at all. If you choose to add a cloud provider, only what you send it goes out, and each request is listed in the Network Ledger.</p>
           </details>
           <details>
-            <summary>What is PanUrgos Sovereign?</summary>
-            <p>The organisation platform we're building next: your models on your own servers, reachable only by employees and personnel you authorise, with an audit trail of every request. PanUrgos Studio, the private code editor, is available today.</p>
+            <summary>What is the team version?</summary>
+            <p>A version for organisations that we're building next: your models on your own servers, available only to the people you approve, with a log of every request. PanUrgos Studio, the code editor, is available today.</p>
           </details>
           <details>
             <summary>What hardware do I need?</summary>
@@ -367,7 +359,7 @@
           </details>
           <details>
             <summary>Why the name?</summary>
-            <p><span class="greek">Πανοῦργος</span> (panourgos) is Ancient Greek for one who is ready to do anything: capable of anything. The full power of AI, working for you alone.</p>
+            <p><span class="greek">Πανοῦργος</span> (panourgos) is Ancient Greek for someone resourceful, ready to turn their hand to any task.</p>
           </details>
         </div>
       </div>
@@ -382,7 +374,7 @@
           <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M16 2 4 8v8c0 7 5.2 12.4 12 14 6.8-1.6 12-7 12-14V8L16 2z" fill="url(#lg)"/><path d="M16 9a7 7 0 1 0 0 14 5.2 5.2 0 0 1 0-14z" fill="#050506"/></svg>
           <span>PANURGOS</span>
         </a>
-        <p>Capable of anything. Accountable to you.</p>
+        <p>Private AI code editor.</p>
       </div>
       <nav class="foot-links" aria-label="Footer">
         <a href="https://github.com/notpriyanshu/PanUrgos">GitHub</a>
@@ -402,7 +394,7 @@
     <div class="dlg-card" role="dialog" aria-modal="true" aria-labelledby="dlg-title">
       <button class="dlg-x" type="button" data-dl-close aria-label="Close">×</button>
       <form id="dlg-form" novalidate>
-        <p class="label">// INITIATION</p>
+        <p class="label">// DOWNLOAD</p>
         <h3 id="dlg-title">Get PanUrgos Studio</h3>
         <p class="dlg-sub">We'll email you a one-time download link. No password, no tracking.</p>
         <fieldset class="seg">
@@ -430,7 +422,7 @@
         <p class="dlg-msg" id="dlg-msg" role="alert"></p>
       </form>
       <div class="dlg-done" id="dlg-done" hidden>
-        <p class="label">// TRANSMITTED</p>
+        <p class="label">// SENT</p>
         <h3>Check your inbox.</h3>
         <p class="dlg-sub">If <b id="dlg-sent-to"></b> is right, a link is on its way. It works once, for 30 minutes. Nothing there? Check spam, or try again in two minutes.</p>
         <button class="btn btn-ghost" type="button" data-dl-close>Close</button>
