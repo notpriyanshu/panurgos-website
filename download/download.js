@@ -11,6 +11,17 @@
   };
   const again = '<a class="btn btn-fire btn-lg" href="../#download">Request a new link</a>';
 
+  const err = new URLSearchParams(location.search).get('e');
+  if (err) history.replaceState(null, '', location.pathname);
+  const ERR = {
+    denied: ['CANCELLED', 'Sign-in cancelled<span class="fire">.</span>', 'No problem. Choose another way to get your download.'],
+    expired: ['EXPIRED', 'That took too long<span class="fire">.</span>', 'Sign-in requests last 10 minutes. Please start again.'],
+    noemail: ['NO EMAIL', 'We couldn\'t get a verified email<span class="fire">.</span>', 'Your account didn\'t share a verified email address. Try another sign-in option, or use your email instead.'],
+    unavailable: ['UNAVAILABLE', 'That sign-in option is off right now<span class="fire">.</span>', 'Please use another option, or your email.'],
+    busy: ['BUSY', 'Too many requests<span class="fire">.</span>', 'Please wait a minute and try again.'],
+    failed: ['ERROR', 'Sign-in failed<span class="fire">.</span>', 'Something went wrong on the way back. Please try again.']
+  };
+  if (err && !token) { const [l, t, d] = ERR[err] || ERR.failed; return show(l, t, d, again); }
   if (!token) return show('NO LINK', 'Nothing to open<span class="fire">.</span>', 'This page opens the download link we email you. Request one from the homepage.', again);
   if (!CFG.api) return show('OFFLINE', 'Downloads open soon<span class="fire">.</span>', 'The download service isn\'t live yet. Please try again shortly.', '<a class="btn btn-ghost btn-lg" href="../">Back to PanUrgos</a>');
 

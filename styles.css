@@ -481,3 +481,13 @@ button.dl-card { font: inherit; color: inherit; text-align: left; background: no
   .dlg-card { padding: 28px 20px 22px; }
   .dl-card + .dl-card { border-left: 0; }
 }
+
+/* ------------------------------------------------------------------ sign-in buttons */
+.oauth { display: grid; gap: 10px; margin-top: 20px; }
+.oauth-btn { display: flex; align-items: center; justify-content: center; gap: 12px; height: 48px; width: 100%; cursor: pointer; background: #f4efe6; color: #15110d; border: 0; font: 600 15px var(--sans); transition: background .2s, transform .2s; }
+.oauth-btn[data-oauth="github"] { background: #15151b; color: var(--fg); border: 1px solid var(--line-2); }
+.oauth-btn:hover { transform: translateY(-1px); background: #fff; }
+.oauth-btn[data-oauth="github"]:hover { background: #1d1d25; }
+.oauth-btn[disabled] { opacity: .6; cursor: progress; transform: none; }
+.oauth-or { display: flex; align-items: center; gap: 14px; margin: 8px 0 -6px; font: 500 10.5px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; color: var(--fg-3); }
+.oauth-or::before, .oauth-or::after { content: ""; flex: 1; height: 1px; background: var(--line-2); }

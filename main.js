@@ -532,6 +532,23 @@
       }
     });
 
+    // Google / GitHub: same panel choices, then a top-level redirect through the download service.
+    const login = CFG.login || {};
+    const oauthBtns = $$('[data-oauth]', dlg).filter((b) => login[b.dataset.oauth]);
+    oauthBtns.forEach((b) => { b.hidden = false; });
+    if (oauthBtns.length) {
+      $('.oauth-or', dlg).hidden = false;
+      $('.dlg-sub', form).textContent = 'Sign in with ' + oauthBtns.map((b) => (b.dataset.oauth === 'google' ? 'Google' : 'GitHub')).join(' or ') + ', or get a one-time link by email. No password, no tracking.';
+    }
+    for (const b of oauthBtns) b.addEventListener('click', () => {
+      msg.textContent = '';
+      if (!consent.checked) { msg.textContent = 'Please agree to the privacy terms to continue.'; consent.focus(); return; }
+      const platform = radios.find((r) => r.checked).value;
+      const q = new URLSearchParams({ platform, notify: notify.checked ? '1' : '0', consent: '1' });
+      b.disabled = true; b.querySelector('span').textContent = 'Opening ' + (b.dataset.oauth === 'google' ? 'Google' : 'GitHub') + '…';
+      location.href = `${CFG.api}/auth/${b.dataset.oauth}?${q}`;
+    });
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       msg.textContent = '';
