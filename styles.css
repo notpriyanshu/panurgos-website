@@ -387,3 +387,7 @@ h2 { font-size: clamp(38px, 5.2vw, 72px); letter-spacing: -.02em; }
   .nav-cta .icon-link { display: none; }
   .btn-lg { width: 100%; }
 }
+
+.dl-card.soon { cursor: default; }
+.dl-card.soon em { color: var(--fg-3); }
+.dl-card.soon:hover { background: none; }
