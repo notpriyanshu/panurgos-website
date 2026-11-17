@@ -37,6 +37,18 @@
           '<a class="btn btn-ghost btn-lg" href="../">Back to PanUrgos</a>');
       }
       const url = `${CFG.api}/file/${encodeURIComponent(body.ticket)}`;
+      const variants = Array.isArray(body.variants) ? body.variants.filter((v) => v.id !== 'default') : [];
+      if (variants.length > 1) {
+        // macOS (Apple Silicon / Intel) and Linux (AppImage / .deb): let the visitor pick the right file.
+        const buttons = variants.map((v, i) =>
+          `<a class="btn ${i === 0 ? 'btn-fire' : 'btn-ghost'} btn-lg" href="${esc(url + '?v=' + encodeURIComponent(v.id))}">${esc(v.label)}</a>`).join('');
+        const hints = variants.filter((v) => v.hint).map((v) => `<b>${esc(v.label)}</b>: ${esc(v.hint)}`).join('<br>');
+        const mac = body.platform === 'mac'
+          ? '<br><br>First launch: macOS will say it can\'t verify the developer. Open <b>System Settings → Privacy &amp; Security</b> and click <b>Open Anyway</b> once.'
+          : '';
+        return show('VERIFIED', 'Choose your download<span class="fire">.</span>',
+          `PanUrgos Studio ${esc(body.version)} for ${esc(body.platformName)}. Links work for 15 minutes.<br><br>${hints}${mac}`, buttons);
+      }
       show('VERIFIED', 'Your download is starting<span class="fire">.</span>',
         `PanUrgos Studio ${esc(body.version)} for ${esc(body.platformName)} (<code>${esc(body.file)}</code>). If nothing happens, use the button below. It works for 15 minutes.`,
         `<a class="btn btn-fire btn-lg" href="${esc(url)}">Download again</a><a class="btn btn-ghost btn-lg" href="../#studio">What's inside</a>`);
