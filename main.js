@@ -434,10 +434,10 @@
   }
   // ------------------------------------------------------------------ flipping headline (languages + ciphers)
   const WORDS = [
-    ['Think.', 'english · think'], ['Σκέψου.', 'ελληνικά · think'], ['सोचो।', 'हिन्दी · think'], ['Guvax.', 'rot13 · think'],
+    ['Think.', 'english · think'], ['Σκέψου.', 'ελληνικά · think'],['Guvax.', 'rot13 · think'],
     ['Create.', 'english · create'], ['創造。', '日本語 · create'], ['Xivzgv.', 'atbash · create'], ['Erschaffe.', 'deutsch · create'],
     ['Privacy.', 'english · privacy'], ['隐私。', '中文 · privacy'], ['Sulydfb.', 'caesar +3 · privacy'], ['Приватность.', 'русский · privacy'],
-    ['Build.', 'english · build'], ['ابنِ.', 'العربية · build'], ['Construye.', 'español · build'],
+    ['Build.', 'english · build'],['Construye.', 'español · build'],
     ['Command.', 'english · command'], ['Impera.', 'latina · command'], ['명령.', '한국어 · command'],
     ['Own it.', 'english · own'], ['𓋹 𓂀 𓆣', 'hieroglyphs · life · sight · becoming']
   ];
