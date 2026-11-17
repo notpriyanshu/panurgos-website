@@ -441,7 +441,7 @@
     ['Command.', 'english · command'], ['Impera.', 'latina · command'], ['명령.', '한국어 · command'],
     ['Own it.', 'english · own'], ['𓋹 𓂀 𓆣', 'hieroglyphs · life · sight · becoming']
   ];
-  const flip = $('#flip'), flipTag = $('#flip-tag'), tagWrap = flip && $('.flip-tag');
+  const flip = $('#flip');
   if (flip) {
     let wi = 0, timer = 0, running = false;
     const escC = (c) => (c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c);
@@ -472,9 +472,7 @@
     };
     const next = () => {
       wi = (wi + 1) % WORDS.length;
-      const [w, tag] = WORDS[wi];
-      tagWrap.classList.add('swap');
-      scramble(w, () => { flipTag.textContent = tag; tagWrap.classList.remove('swap'); });
+      scramble(WORDS[wi][0]);
       timer = setTimeout(next, 2600);
     };
     const start = () => { if (running || reduced) return; running = true; timer = setTimeout(next, 2200); };
