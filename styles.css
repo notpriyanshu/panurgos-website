@@ -391,3 +391,36 @@ h2 { font-size: clamp(38px, 5.2vw, 72px); letter-spacing: -.02em; }
 .dl-card.soon { cursor: default; }
 .dl-card.soon em { color: var(--fg-3); }
 .dl-card.soon:hover { background: none; }
+
+/* ------------------------------------------------------------------ hieroglyphs (self-hosted Noto, OFL) */
+@font-face {
+  font-family: "PN Glyphs";
+  src: url("assets/fonts/noto-hieroglyphs.woff2") format("woff2");
+  font-display: swap;
+  unicode-range: U+13000-1345F;
+}
+:root { --glyphs: "PN Glyphs", "Segoe UI Historic", "Noto Sans Egyptian Hieroglyphs", serif; }
+
+/* ------------------------------------------------------------------ flipping headline */
+.hero h1.flip-h { min-height: 1.1em; font-size: clamp(54px, 10vw, 150px); letter-spacing: -.03em; line-height: 1.02; white-space: nowrap; }
+.flip { display: inline-block; padding: 0 .08em .06em; font-family: var(--serif), var(--glyphs); }
+.flip .g { font-family: var(--glyphs); font-style: normal; opacity: .85; -webkit-text-fill-color: rgba(243, 213, 143, .75); }
+.flip-tag { margin-top: 18px; font: 500 12px/1 var(--mono); letter-spacing: .24em; text-transform: uppercase; color: var(--fg-3); min-height: 12px; }
+.flip-tag .bracket { color: var(--ember); }
+.flip-tag #flip-tag { transition: opacity .3s ease; }
+.flip-tag.swap #flip-tag { opacity: 0; }
+
+/* ------------------------------------------------------------------ friezes */
+.frieze { position: relative; overflow: hidden; height: 44px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(90deg, var(--void), transparent 12%, transparent 88%, var(--void)); }
+.frieze::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(90deg, var(--void) 0%, transparent 14%, transparent 86%, var(--void) 100%); }
+.frieze-track { position: absolute; top: 0; left: 0; display: flex; white-space: nowrap; height: 100%; align-items: center; font: 22px/1 var(--glyphs); color: rgba(243, 213, 143, .32); letter-spacing: .5em; animation: frieze 140s linear infinite; will-change: transform; }
+.frieze-track span { padding-right: .5em; }
+.frieze-track .sep { color: rgba(255, 106, 43, .55); font: 10px/1 var(--mono); letter-spacing: .3em; padding: 0 1.4em; }
+.frieze.rev .frieze-track { animation-direction: reverse; animation-duration: 170s; }
+@keyframes frieze { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* hieroglyph ring on the phoenix halo */
+.phoenix .glyph-ring { font: 15px var(--glyphs); fill: rgba(243, 213, 143, .42); letter-spacing: 6px; }
+
+@media (prefers-reduced-motion: reduce) { .frieze-track { animation: none; } }
+@media (max-width: 760px) { .hero h1.flip-h { font-size: clamp(44px, 13vw, 72px); } .frieze { height: 36px; } .frieze-track { font-size: 18px; } }

@@ -3,6 +3,9 @@
   // Fill these in to show the Instagram and contact links (they stay hidden while empty).
   const LINKS = { instagram: '', email: '' };
 
+  const HIERO = [...'𓂀𓋹𓆣𓇳𓊽𓁹𓅃𓆄𓋴𓏏𓂋𓈖𓊪𓃭𓅓𓉐𓆓𓇋𓄿𓎛𓐍𓇯𓆑𓂝𓃀𓅱𓍿𓌳𓊹𓋞'];
+  const RUNES = [...'ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛊᛏᛒᛖᛗᛚᛜᛞᛟ'];
+  const NOISE = [...HIERO, ...RUNES, ...'ΣΩΨΦΔΞλπ01アカサタナハマヤラワ#*<>/'];
   const root = document.documentElement;
   root.classList.add('js');
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -66,7 +69,7 @@
   function rain(canvas) {
     if (!canvas) return null;
     const ctx = canvas.getContext('2d');
-    const glyphs = 'πανοῦργος01アイウエオカキクケコ<>{}[]=+*#ΣΩΨΦΔ';
+    const glyphs = [...'πανοῦργος01アイウエオカキクケコ<>{}[]=+*#ΣΩΨΦΔ', ...HIERO, ...RUNES];
     let cols = [], w = 0, h = 0, fs = 16, raf = 0, last = 0;
     const size = () => {
       const dpr = Math.min(devicePixelRatio || 1, 2);
@@ -79,7 +82,7 @@
       raf = requestAnimationFrame(draw);
       if (t - last < 50) return; last = t;
       ctx.fillStyle = 'rgba(0,0,0,.12)'; ctx.fillRect(0, 0, w, h);
-      ctx.font = `${fs}px monospace`;
+      ctx.font = `${fs}px "PN Glyphs", "Segoe UI Historic", monospace`;
       cols.forEach((y, i) => {
         const ch = glyphs[(Math.random() * glyphs.length) | 0];
         ctx.fillStyle = Math.random() > .975 ? '#e6f3ff' : 'rgba(59,155,255,.55)';
@@ -112,6 +115,10 @@
     const add = (parent, tag, attrs) => { const n = document.createElementNS(NS, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); parent.appendChild(n); return n; };
     const f = (n) => n.toFixed(1);
 
+    add(svg.querySelector('defs'), 'path', { id: 'glyph-orbit', d: 'M400 270 m-262 0 a262 262 0 1 1 524 0 a262 262 0 1 1 -524 0' });
+    const ringText = add(ticks.parentNode, 'text', { class: 'glyph-ring' });
+    const tp = add(ringText, 'textPath', { href: '#glyph-orbit' });
+    tp.textContent = Array.from({ length: 3 }, () => HIERO.join(' ')).join('  ·  ');
     for (let i = 0; i < 72; i++) {
       const a = i / 72 * Math.PI * 2; const r1 = 232; const r2 = i % 6 ? 238 : 248;
       add(ticks, 'line', { class: 'tick', x1: f(400 + Math.cos(a) * r1), y1: f(270 + Math.sin(a) * r1), x2: f(400 + Math.cos(a) * r2), y2: f(270 + Math.sin(a) * r2) });
@@ -423,5 +430,63 @@
       });
     });
     new IntersectionObserver(([e]) => { inView = e.isIntersecting; if (inView) select(cur); else clearTimeout(timer); }, { threshold: .3 }).observe(laws);
+  }
+  // ------------------------------------------------------------------ flipping headline (languages + ciphers)
+  const WORDS = [
+    ['Think.', 'english · think'], ['Σκέψου.', 'ελληνικά · think'], ['सोचो।', 'हिन्दी · think'], ['Guvax.', 'rot13 · think'],
+    ['Create.', 'english · create'], ['創造。', '日本語 · create'], ['Xivzgv.', 'atbash · create'], ['Erschaffe.', 'deutsch · create'],
+    ['Privacy.', 'english · privacy'], ['隐私。', '中文 · privacy'], ['Sulydfb.', 'caesar +3 · privacy'], ['Приватность.', 'русский · privacy'],
+    ['Build.', 'english · build'], ['ابنِ.', 'العربية · build'], ['Construye.', 'español · build'],
+    ['Command.', 'english · command'], ['Impera.', 'latina · command'], ['명령.', '한국어 · command'],
+    ['Own it.', 'english · own'], ['𓋹 𓂀 𓆣', 'hieroglyphs · life · sight · becoming']
+  ];
+  const flip = $('#flip'), flipTag = $('#flip-tag'), tagWrap = flip && $('.flip-tag');
+  if (flip) {
+    let wi = 0, timer = 0, running = false;
+    const escC = (c) => (c === '&' ? '&amp;' : c === '<' ? '&lt;' : c === '>' ? '&gt;' : c);
+    const fit = () => {
+      flip.style.fontSize = '';
+      const max = flip.parentElement.clientWidth * 0.96;
+      if (flip.scrollWidth > max) flip.style.fontSize = (parseFloat(getComputedStyle(flip).fontSize) * max / flip.scrollWidth) + 'px';
+    };
+    const scramble = (to, done) => {
+      const target = [...to]; const from = [...flip.textContent];
+      const len = Math.max(target.length, from.length);
+      const frames = 22; let f = 0;
+      const step = () => {
+        f++;
+        let html = '';
+        for (let i = 0; i < len; i++) {
+          const settle = Math.floor((i / len) * frames * 0.7) + Math.floor(frames * 0.3);
+          if (f >= settle) { if (i < target.length) html += escC(target[i]); }
+          else if (i < target.length || f < settle - 3) {
+            const g = NOISE[(Math.random() * NOISE.length) | 0];
+            html += HIERO.includes(g) ? '<i class="g">' + g + '</i>' : escC(g);
+          }
+        }
+        flip.innerHTML = html; fit();
+        if (f < frames) setTimeout(step, 34); else { flip.textContent = to; fit(); if (done) done(); }
+      };
+      step();
+    };
+    const next = () => {
+      wi = (wi + 1) % WORDS.length;
+      const [w, tag] = WORDS[wi];
+      tagWrap.classList.add('swap');
+      scramble(w, () => { flipTag.textContent = tag; tagWrap.classList.remove('swap'); });
+      timer = setTimeout(next, 2600);
+    };
+    const start = () => { if (running || reduced) return; running = true; timer = setTimeout(next, 2200); };
+    const stop = () => { running = false; clearTimeout(timer); };
+    fit(); addEventListener('resize', fit);
+    new IntersectionObserver(([e]) => (e.isIntersecting ? start() : stop())).observe(flip);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+  }
+
+  // ------------------------------------------------------------------ hieroglyph friezes
+  for (const track of $$('[data-frieze]')) {
+    const line = [...HIERO].sort(() => Math.random() - 0.5).join('') + [...HIERO].sort(() => Math.random() - 0.5).join('');
+    const unit = '<span>' + line + '</span><span class="sep">PANURGOS · ΠΑΝΟΥΡΓΟΣ</span>';
+    track.innerHTML = unit.repeat(6);
   }
 })();
