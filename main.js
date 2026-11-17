@@ -32,7 +32,7 @@
   const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
   onScroll(); addEventListener('scroll', onScroll, { passive: true });
 
-  // ------------------------------------------------------------------ the gate (blue pill)
+  // ------------------------------------------------------------------ the gate
   const gate = $('#gate');
   let started = false;
   function begin() {
@@ -53,16 +53,16 @@
   if (gate && !store.get('pn-awake') && !reduced) {
     document.body.classList.add('locked');
     stopRain = rain($('#gate-rain'));
-    $('#pill').addEventListener('click', () => enter(true));
+    $('#cross').addEventListener('click', () => enter(true));
     $('#gate-skip').addEventListener('click', () => enter(false));
     addEventListener('keydown', function k(e) { if (e.key === 'Escape') { removeEventListener('keydown', k); enter(false); } });
-    setTimeout(() => $('#pill')?.focus({ preventScroll: true }), 5200);
+    setTimeout(() => $('#cross')?.focus({ preventScroll: true }), 5200);
   } else {
     gate?.classList.add('hidden');
     queueMicrotask(begin); // after the rest of this script has initialised
   }
 
-  // Falling glyphs behind the gate, in pill blue.
+  // Falling glyphs behind the gate.
   function rain(canvas) {
     if (!canvas) return null;
     const ctx = canvas.getContext('2d');

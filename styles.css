@@ -1,4 +1,4 @@
-/* PanUrgos — panurgos.com. Void black, ember gold, one blue pill. System faces only: no font requests. */
+/* PanUrgos — panurgos.com. Void black, ember gold, a cold blue threshold. System faces only: no font requests. */
 :root {
   --void: #050506;
   --ink: #09090c;
@@ -13,7 +13,7 @@
   --ember: #ff6a2b;
   --flame: #e2362b;
   --cream: #ffe6c2;
-  --pill: #3b9bff;
+  --threshold: #3b9bff;
   --ok: #7ee2a8;
   --bad: #ff4a3d;
   --fire: linear-gradient(100deg, #f6dc9a 0%, #ffad5c 40%, #ff6a2b 70%, #e2362b 100%);
@@ -77,13 +77,15 @@ body::after {
 .l1 { animation-delay: .4s; } .l2 { animation-delay: 1.5s; } .l3 { animation-delay: 2.6s; } .l4 { animation-delay: 3.8s; } .l5 { animation-delay: 5s; }
 @keyframes type { from { opacity: 0; clip-path: inset(0 100% 0 0); } to { opacity: 1; clip-path: inset(0 0 0 0); } }
 @keyframes rise { from { opacity: 0; transform: translateY(20px); filter: blur(12px); } to { opacity: 1; transform: none; filter: none; } }
-.pill {
-  display: inline-flex; align-items: center; gap: 16px; padding: 14px 26px 14px 16px; cursor: pointer; border-radius: 999px;
+.cross {
+  display: inline-flex; align-items: center; gap: 16px; padding: 14px 28px 14px 16px; cursor: pointer; border-radius: 999px;
   background: rgba(59, 155, 255, .06); border: 1px solid rgba(59, 155, 255, .35); opacity: 0; animation: rise 1.2s ease 5s forwards, breathe 3s 6.5s ease-in-out infinite;
-  font: 600 12.5px/1 var(--mono); letter-spacing: .2em; text-transform: uppercase; color: #cfe6ff; transition: background .3s, border-color .3s, transform .3s;
+  font: 600 12.5px/1 var(--mono); letter-spacing: .24em; text-transform: uppercase; color: #cfe6ff; transition: background .3s, border-color .3s, transform .3s;
 }
-.pill:hover { background: rgba(59, 155, 255, .14); border-color: rgba(120, 190, 255, .8); transform: scale(1.03); }
-.pill-cap { width: 54px; height: 22px; border-radius: 999px; background: linear-gradient(90deg, #1a5fd6 50%, #63b6ff 50%); box-shadow: 0 0 24px rgba(59, 155, 255, .9), inset 0 2px 4px rgba(255, 255, 255, .5), inset 0 -3px 6px rgba(0, 0, 0, .35); transform: rotate(-24deg); }
+.cross:hover { background: rgba(59, 155, 255, .14); border-color: rgba(120, 190, 255, .8); transform: scale(1.03); }
+.cross-orb { position: relative; width: 22px; height: 22px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #e6f3ff, #63b6ff 35%, #1a5fd6 70%, #0a2a66); box-shadow: 0 0 24px rgba(59, 155, 255, .9); }
+.cross-orb::after { content: ""; position: absolute; inset: -7px; border-radius: 50%; border: 1px solid rgba(120, 190, 255, .5); animation: halo 2.4s ease-out infinite; }
+@keyframes halo { from { transform: scale(.7); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
 @keyframes breathe { 0%, 100% { box-shadow: 0 0 0 0 rgba(59, 155, 255, 0); } 50% { box-shadow: 0 0 40px 2px rgba(59, 155, 255, .35); } }
 .gate-skip { display: block; margin: 26px auto 0; background: none; border: 0; cursor: pointer; color: #4f6377; font: 500 11px/1 var(--mono); letter-spacing: .18em; text-transform: uppercase; opacity: 0; animation: rise 1.2s ease 5.6s forwards; }
 .gate-skip:hover { color: #9db4c9; }
@@ -233,7 +235,7 @@ h2 { font-size: clamp(38px, 5.2vw, 72px); letter-spacing: -.02em; }
 .g-legend .dot:first-child { margin-left: 0; }
 .dot.w { background: #e8e2d8; } .dot.e { background: var(--ember); } .dot.c { background: var(--cream); } .dot.r { background: var(--bad); }
 
-/* ------------------------------------------------------------------ old world vs new order */
+/* ------------------------------------------------------------------ old way vs the other side */
 .versus { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); border: 1px solid var(--line); }
 .vs-col { padding: 52px 48px; }
 .vs-col .label { margin-bottom: 30px; }
@@ -346,7 +348,7 @@ h2 { font-size: clamp(38px, 5.2vw, 72px); letter-spacing: -.02em; }
   html { scroll-behavior: auto; }
   body::after, .phoenix .halo, .rise, .scroll-cue span { animation: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
-  .gate-line, .gate-title, .pill, .gate-skip { animation: none; opacity: 1; }
+  .gate-line, .gate-title, .cross, .gate-skip { animation: none; opacity: 1; }
 }
 
 /* ------------------------------------------------------------------ responsive */
