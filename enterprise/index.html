@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PanUrgos for Enterprises — Private AI on your own hardware</title>
+  <meta name="description" content="A private AI system that runs inside your organisation: it connects to your data, learns from it on your own servers, and handles routine work. Your data stays on your premises. Book a call.">
+  <meta name="theme-color" content="#050506">
+  <link rel="canonical" href="https://panurgos.com/enterprise/">
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://panurgos.com/enterprise/">
+  <meta property="og:title" content="PanUrgos for Enterprises — Private AI on your own hardware">
+  <meta property="og:description" content="Connects to your data, learns from it on your own servers, and handles routine work. Your data stays on your premises.">
+  <meta property="og:image" content="https://panurgos.com/assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' http://127.0.0.1:8787 https://panurgos-api.panurgos-download-api.workers.dev; base-uri 'self'; form-action 'none'">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="ent">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="../" aria-label="PanUrgos home">
+        <svg viewBox="0 0 32 32" width="24" height="24" aria-hidden="true"><defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d58f"/><stop offset=".55" stop-color="#ff8a3d"/><stop offset="1" stop-color="#e2362b"/></linearGradient></defs><path d="M16 2 4 8v8c0 7 5.2 12.4 12 14 6.8-1.6 12-7 12-14V8L16 2z" fill="url(#lg)"/><path d="M16 9a7 7 0 1 0 0 14 5.2 5.2 0 0 1 0-14z" fill="#050506"/></svg>
+        <span>PANURGOS</span>
+      </a>
+      <nav class="links" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#uses">Use cases</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#security">Security</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a class="icon-link nav-text" href="../">Studio</a>
+        <a class="btn btn-sm btn-fire" href="#book">Book a call</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================================================ HERO -->
+    <section class="hero ent-hero" id="top">
+      <canvas class="embers" id="embers" aria-hidden="true"></canvas>
+      <div class="hero-vignette" aria-hidden="true"></div>
+      <div class="wrap hero-in">
+        <p class="kicker reveal">PanUrgos for Enterprises <span class="sep">·</span> early access</p>
+        <h1 class="reveal">Your company's AI,<br><span class="fire">on your own hardware.</span></h1>
+        <p class="lede reveal">A private AI system that runs inside your organisation. It connects to the tools and data you already have, learns from them on your own servers, and takes routine work off your team. Your data stays on your premises.</p>
+        <div class="cta-row reveal">
+          <a class="btn btn-fire btn-lg" href="#book">Book a call</a>
+          <a class="btn btn-ghost btn-lg" href="#how">How it works</a>
+        </div>
+
+        <!-- Pipeline: sources -> your building (connect, store, learn, act) -> outcomes; cloud optional and gated -->
+        <figure class="pipe reveal" aria-label="Diagram: your data sources flow into PanUrgos inside your building, which produces answers, reports and completed tasks. The cloud connection is optional and limited to updates.">
+          <div class="pipe-cloud"><b>Cloud</b><span>optional · updates and new open models only</span><i class="pipe-gate" aria-hidden="true"></i></div>
+          <div class="pipe-building">
+            <p class="pipe-cap">YOUR PREMISES</p>
+            <div class="pipe-row">
+              <ul class="pipe-col pipe-src" aria-label="Sources">
+                <li>Email</li><li>Documents</li><li>Databases</li><li>CRM · ERP</li><li>Tickets · chat</li><li>Sensors · logs</li>
+              </ul>
+              <div class="pipe-flow" aria-hidden="true"><i></i><i></i><i></i></div>
+              <ol class="pipe-core" aria-label="Inside PanUrgos">
+                <li><b>Connect</b><span>read-only connectors</span></li>
+                <li><b>Store</b><span>encrypted, on-site</span></li>
+                <li><b>Learn</b><span>models trained on your GPUs</span></li>
+                <li><b>Act</b><span>answers, reports, tasks</span></li>
+              </ol>
+              <div class="pipe-flow" aria-hidden="true"><i></i><i></i><i></i></div>
+              <ul class="pipe-col pipe-out" aria-label="Results">
+                <li>Answers with sources</li><li>Daily reports</li><li>Alerts</li><li>Drafted replies</li><li>Completed tasks</li>
+              </ul>
+            </div>
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============================================================ HOW IT WORKS -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="label">// HOW IT WORKS</p>
+          <h2>Four steps, <span class="fire">all inside your network.</span></h2>
+          <p>PanUrgos is installed on servers you own or that we set up for you. Everything below happens on that hardware.</p>
+        </header>
+        <div class="steps reveal">
+          <article class="step"><span class="step-n">01</span><h3>Connect</h3><p>Read-only connectors for email, documents, databases, CRM and ERP systems, ticketing, chat and file shares, plus machine and sensor data where you have it. New and changed data is picked up continuously.</p></article>
+          <article class="step"><span class="step-n">02</span><h3>Store</h3><p>Data is indexed and encrypted on your own storage, under the retention rules you set. Nothing is copied to us or to any other vendor.</p></article>
+          <article class="step"><span class="step-n">03</span><h3>Learn</h3><p>Open models run on your GPUs and are fine-tuned on your data, so they learn your products, terms and processes. The trained models belong to you.</p></article>
+          <article class="step"><span class="step-n">04</span><h3>Act</h3><p>Assistants answer staff questions with sources, write reports, flag unusual activity and carry out routine tasks across your systems, with approval steps where you want them.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ CLOUD -->
+    <section class="section ent-cloud" id="cloud">
+      <div class="wrap">
+        <div class="versus reveal">
+          <div class="vs-col old">
+            <p class="label">USUAL ENTERPRISE AI</p>
+            <ul>
+              <li>Your data is sent to a provider's cloud</li>
+              <li>Models are rented, not owned</li>
+              <li>Costs grow with every request</li>
+              <li>Stops working when the connection does</li>
+            </ul>
+          </div>
+          <div class="vs-mid" aria-hidden="true"><span>→</span></div>
+          <div class="vs-col new">
+            <p class="label">PANURGOS FOR ENTERPRISES</p>
+            <ul>
+              <li>Data is processed and stored on your premises</li>
+              <li>Models are trained on your data and stay yours</li>
+              <li>Runs on hardware you already paid for</li>
+              <li>Works without an internet connection</li>
+            </ul>
+          </div>
+        </div>
+        <p class="footnote reveal">The cloud is optional. If you allow it, PanUrgos can fetch software updates and new open models. Each request is listed in the audit log, and none of them contain your business data.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================ USE CASES -->
+    <section class="section" id="uses">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="label">// USE CASES</p>
+          <h2>Less manual work, <span class="fire">across every team.</span></h2>
+          <p>Examples of the work we're building toward with early-access partners. On the call we'll look at which of these fit your data.</p>
+        </header>
+        <div class="cases reveal">
+          <article class="case"><b>Finance</b><p>Match invoices to purchase orders, flag mismatches and duplicate payments, and draft month-end summaries.</p></article>
+          <article class="case"><b>Operations</b><p>Turn machine, sensor and log data into daily reports and early warnings before small problems become outages.</p></article>
+          <article class="case"><b>Customer support</b><p>Sort and route incoming tickets, and draft replies from past cases and your documentation.</p></article>
+          <article class="case"><b>Sales</b><p>Summarise accounts before meetings and keep the CRM up to date from emails and call notes.</p></article>
+          <article class="case"><b>Engineering</b><p>Search code, tickets and documentation in one place, review changes and draft runbooks.</p></article>
+          <article class="case"><b>People &amp; HR</b><p>Answer policy questions, prepare onboarding plans and keep internal documents current.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ HARDWARE -->
+    <section class="section" id="hardware">
+      <div class="wrap">
+        <header class="sec-head center reveal">
+          <p class="label">// HARDWARE</p>
+          <h2>Sized to <span class="fire">your organisation.</span></h2>
+          <p>Use servers you already have, or we'll specify and set up the hardware for you. Final configurations are being set with early-access partners.</p>
+        </header>
+        <div class="hw tiers reveal">
+          <div class="hw-item"><b>Workstation</b><span>One GPU server. Suited to a pilot or a single team.</span></div>
+          <div class="hw-item"><b>Rack</b><span>Multi-GPU servers for a department, or a company of a few hundred people.</span></div>
+          <div class="hw-item"><b>Cluster</b><span>Several nodes for large data volumes and many people using it at once.</span></div>
+          <div class="hw-item"><b>Air-gapped</b><span>Any of the above with no connection to the internet at all.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ SECURITY -->
+    <section class="section" id="security">
+      <div class="wrap">
+        <header class="sec-head reveal">
+          <p class="label">// SECURITY AND CONTROL</p>
+          <h2>You decide who sees what, <span class="fire">and what it can do.</span></h2>
+        </header>
+        <div class="feats sec-grid reveal">
+          <div class="feat"><b>Permissions carried over</b><span>People only get answers from data they're already allowed to see.</span></div>
+          <div class="feat"><b>Full audit log</b><span>Every question, answer and action is recorded, with who asked and when.</span></div>
+          <div class="feat"><b>Approvals</b><span>Anything that changes data or sends a message can wait for a person to approve it.</span></div>
+          <div class="feat"><b>Encryption</b><span>Data is encrypted at rest and in transit inside your network.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ BOOK A CALL -->
+    <section class="section book" id="book">
+      <div class="rise" aria-hidden="true"></div>
+      <div class="wrap book-in">
+        <div class="book-copy reveal">
+          <p class="label">// BOOK A CALL</p>
+          <h2>Talk to <span class="fire">the team.</span></h2>
+          <p>A 30-minute video call. Tell us about your data and the work you want to automate, and we'll tell you honestly whether PanUrgos fits and what a first deployment would look like.</p>
+          <ul class="ticks-plain">
+            <li>No sales deck</li>
+            <li>No preparation needed</li>
+            <li>A calendar invite arrives by email right away</li>
+          </ul>
+        </div>
+
+        <div class="booker reveal" id="booker">
+          <div class="booker-step" id="bk-when">
+            <div class="booker-head"><b>Pick a time</b><span id="bk-tz">Loading times…</span></div>
+            <div class="days" id="bk-days" role="listbox" aria-label="Day"></div>
+            <div class="times" id="bk-times" role="listbox" aria-label="Time"></div>
+            <p class="booker-empty" id="bk-empty" hidden>No times are open right now. Please check back soon.</p>
+          </div>
+
+          <form class="booker-step" id="bk-form" novalidate hidden>
+            <button class="booker-back" type="button" id="bk-back">← Change time</button>
+            <p class="booker-picked" id="bk-picked"></p>
+            <label class="fld"><span>Name</span><input id="bk-name" autocomplete="name" maxlength="100" required></label>
+            <label class="fld"><span>Work email</span><input id="bk-email" type="email" autocomplete="email" inputmode="email" maxlength="254" required></label>
+            <label class="fld"><span>Company</span><input id="bk-company" autocomplete="organization" maxlength="120" required></label>
+            <label class="fld"><span>Company size</span>
+              <select id="bk-size">
+                <option value="">Choose…</option><option>1-50</option><option>51-250</option><option>251-1000</option><option>1001-5000</option><option>5000+</option>
+              </select>
+            </label>
+            <label class="fld"><span>What would you like to automate? <i>(optional)</i></span><textarea id="bk-topic" rows="3" maxlength="1500" placeholder="For example: matching invoices, sorting support tickets, reports from sensor data"></textarea></label>
+            <label class="chk"><input type="checkbox" id="bk-consent"><span>I agree to the <a href="../privacy/" target="_blank" rel="noopener">privacy terms</a>: my details are used only to arrange and hold this call.</span></label>
+            <button class="btn btn-fire btn-lg booker-go" type="submit" id="bk-submit">Book the call</button>
+            <p class="dlg-msg" id="bk-msg" role="alert"></p>
+          </form>
+
+          <div class="booker-step booker-done" id="bk-done" hidden>
+            <p class="label">// BOOKED</p>
+            <h3>See you then.</h3>
+            <p id="bk-done-text"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================ FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap narrow">
+        <header class="sec-head center reveal">
+          <p class="label">// FAQ</p>
+          <h2>Questions</h2>
+        </header>
+        <div class="faq reveal">
+          <details>
+            <summary>Does any of our data leave our premises?</summary>
+            <p>No. Data is collected, stored, processed and used for training on your own hardware. The only optional outside connections are software updates and new open models, which you can switch off entirely.</p>
+          </details>
+          <details>
+            <summary>Which systems can it connect to?</summary>
+            <p>Common ones such as email, file shares, document stores, databases, CRM, ERP and ticketing tools, plus custom systems through their APIs or databases. On the call we'll go through yours.</p>
+          </details>
+          <details>
+            <summary>Do we need our own AI team?</summary>
+            <p>No. We install it, connect your systems and set up the first models with you. Your IT team looks after the hardware like any other server.</p>
+          </details>
+          <details>
+            <summary>Can it run without an internet connection?</summary>
+            <p>Yes. It can run fully air-gapped. Updates can then be applied from approved offline media.</p>
+          </details>
+          <details>
+            <summary>How is it priced?</summary>
+            <p>Pricing is set per deployment, based on its size and the hardware involved. Early-access partners help shape it, and we'll discuss it on the call.</p>
+          </details>
+          <details>
+            <summary>When can we start?</summary>
+            <p>PanUrgos for Enterprises is in early access now. Book a call to talk about a pilot.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div class="foot-brand">
+        <a class="brand" href="../">
+          <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true"><path d="M16 2 4 8v8c0 7 5.2 12.4 12 14 6.8-1.6 12-7 12-14V8L16 2z" fill="url(#lg)"/><path d="M16 9a7 7 0 1 0 0 14 5.2 5.2 0 0 1 0-14z" fill="#050506"/></svg>
+          <span>PANURGOS</span>
+        </a>
+        <p>Private AI on your own hardware.</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="../">PanUrgos Studio</a>
+        <a href="https://github.com/notpriyanshu/PanUrgos">GitHub</a>
+        <a href="../privacy/">Privacy</a>
+        <a data-link="instagram" href="#" hidden>Instagram</a>
+        <a data-link="email" href="#" hidden>Contact</a>
+      </nav>
+      <p class="foot-note">This site sets no cookies, runs no analytics and loads nothing from anyone else. © <span data-year>2026</span> PanUrgos.</p>
+    </div>
+  </footer>
+
+  <script src="../config.js"></script>
+  <script src="../main.js"></script>
+  <script src="enterprise.js"></script>
+</body>
+</html>
